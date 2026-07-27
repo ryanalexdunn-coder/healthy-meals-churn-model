@@ -7,11 +7,15 @@ import pickle
 # Load model and encoder
 # -------------------------
 
+import zipfile
+import os
+
+if not os.path.exists("churn_rf_healthy_meals.pkl"):
+    with zipfile.ZipFile("churn_rf_healthy_meals.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
+
 with open("churn_rf_healthy_meals.pkl", "rb") as f:
     model = pickle.load(f)
-
-with open("churn_encoder_healthy_meals.pkl", "rb") as f:
-    encoder = pickle.load(f)
 
 
 # -------------------------
